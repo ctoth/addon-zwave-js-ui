@@ -11,12 +11,13 @@ FROM ${BUILD_FROM}
 ENV S6_KILL_GRACETIME=30000 \
     S6_SERVICES_GRACETIME=30000
 
-# Install runtime deps only
+# Install runtime deps and prepare nginx dirs
 RUN apk add --no-cache \
     eudev \
     libusb \
     nginx \
-    nodejs
+    nodejs \
+    && mkdir -p /etc/nginx/servers /etc/nginx/includes
 
 # Copy the application from upstream image
 COPY --from=upstream /usr/src/app /opt/zwave-js-ui

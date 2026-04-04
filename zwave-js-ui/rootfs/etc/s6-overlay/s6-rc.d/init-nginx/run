@@ -1,2 +1,3 @@
 #!/command/with-contenv bashio
+mkdir -p /etc/nginx/servers
 tempio -conf /data/options.json -template /etc/nginx/templates/ingress.gtpl -out /etc/nginx/servers/ingress.conf
