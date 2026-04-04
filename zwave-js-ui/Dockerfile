@@ -1,9 +1,11 @@
-# Upstream zwave-js-ui for the application files
+# Global ARGs — must be before any FROM for multi-stage scope
 ARG ZWAVE_JS_UI_VERSION=11.15.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:20.0.2
+
+# Upstream zwave-js-ui for the application files
 FROM zwavejs/zwave-js-ui:${ZWAVE_JS_UI_VERSION} AS upstream
 
 # HA add-on base
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:20.0.2
 FROM ${BUILD_FROM}
 
 ENV S6_KILL_GRACETIME=30000 \
