@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/Dockerfile$/"],
+      "matchStrings": [
+        "ARG ZWAVE_JS_UI_VERSION=(?<currentValue>[\\d.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "zwavejs/zwave-js-ui",
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["zwavejs/zwave-js-ui"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}

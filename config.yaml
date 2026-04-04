@@ -1,0 +1,41 @@
+name: Z-Wave JS UI
+version: 0.1.0
+slug: zwave-js-ui
+description: Z-Wave JS gateway with MQTT and control panel UI
+url: https://github.com/ctoth/home-automation
+ingress: true
+ingress_stream: true
+panel_title: Z-Wave JS UI
+panel_icon: mdi:z-wave
+startup: system
+init: false
+timeout: 30
+arch:
+  - aarch64
+  - amd64
+discovery:
+  - zwave_js
+services:
+  - mqtt:want
+uart: true
+udev: true
+options:
+  device: ""
+  log_level: info
+  network_key: ""
+  s2_unauthenticated: ""
+  s2_authenticated: ""
+  s2_access_control: ""
+schema:
+  device: device?
+  log_level: list(trace|debug|info|warn|error)?
+  network_key: str?
+  s2_unauthenticated: str?
+  s2_authenticated: str?
+  s2_access_control: str?
+ports:
+  3000/tcp: null
+ports_description:
+  3000/tcp: Z-Wave JS WebSocket
+map:
+  - share:rw

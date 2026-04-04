@@ -1,0 +1,12 @@
+#!/command/with-contenv bashio
+bashio::log.info "Starting Z-Wave JS UI..."
+
+export NODE_ENV=production
+export PORT=44920
+export STORE_DIR=/data/store
+export ZWAVEJS_EXTERNAL_CONFIG=/data/db
+export FORCE_DISABLE_SSL=true
+export BASE_PATH=/
+
+cd /opt/zwave-js-ui || bashio::exit.nok "Could not change directory to application"
+exec node server/bin/www

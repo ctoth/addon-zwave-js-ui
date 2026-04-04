@@ -1,0 +1,26 @@
+server {
+    listen 8099 default_server;
+
+    include /etc/nginx/includes/server_params.conf;
+    include /etc/nginx/includes/proxy_params.conf;
+    proxy_set_header X-External-Path {{ .entry }};
+
+    location / {
+        allow   127.0.0.1;
+        allow   172.30.32.2;
+        deny    all;
+
+        proxy_pass http://backend;
+    }
+
+    location /socket.io {
+        allow   127.0.0.1;
+        allow   172.30.32.2;
+        deny    all;
+
+        proxy_pass http://backend/socket.io;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}

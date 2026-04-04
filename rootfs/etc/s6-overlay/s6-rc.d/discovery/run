@@ -1,0 +1,9 @@
+#!/command/with-contenv bashio
+bashio::net.wait_for 3000 localhost 1800
+sleep 10
+payload=$(bashio::var.json host "$(hostname)" port "^3000")
+if bashio::discovery "zwave_js" "${payload}" > /dev/null; then
+  bashio::log.info "Discovery info sent to Home Assistant."
+else
+  bashio::log.error "Discovery message failed!"
+fi

@@ -1,0 +1,2 @@
+#!/command/with-contenv bashio
+bashio::log.warning "Z-Wave JS UI exited, code: ${1}"
