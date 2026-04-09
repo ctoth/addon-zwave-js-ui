@@ -4,6 +4,7 @@ slug: zwave-js-ui
 description: Z-Wave JS gateway with MQTT and control panel UI
 url: https://github.com/ctoth/home-automation
 ingress: true
+ingress_panel: true
 ingress_stream: true
 panel_title: Z-Wave JS UI
 panel_icon: mdi:z-wave
