@@ -25,7 +25,7 @@ COPY --from=upstream /usr/src/app /opt/zwave-js-ui
 # Copy rootfs (s6 services, nginx config)
 COPY rootfs /
 
-HEALTHCHECK CMD curl --fail http://127.0.0.1:8099/health/zwave || exit 1
+HEALTHCHECK CMD curl --fail -L http://127.0.0.1:8099/health/zwave || exit 1
 
 ARG BUILD_ARCH
 ARG BUILD_DATE
