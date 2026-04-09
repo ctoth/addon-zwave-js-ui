@@ -1,5 +1,5 @@
 name: Z-Wave JS UI
-version: 0.1.0
+version: 0.1.1
 slug: zwave-js-ui
 description: Z-Wave JS gateway with MQTT and control panel UI
 url: https://github.com/ctoth/home-automation
